@@ -22,7 +22,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and push docker image
+      - name: Build and push docker images
         id: build-the-image
         env:
           ECR_REGISTRY: 985182088924.dkr.ecr.us-east-1.amazonaws.com
