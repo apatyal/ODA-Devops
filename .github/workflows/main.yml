@@ -29,6 +29,5 @@ jobs:
           ECR_REPOSITORY: workflow
           IMAGE_TAG: postgres_1989
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress-01_$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgress-01_$IMAGE_TAG
-          #asdc
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG
