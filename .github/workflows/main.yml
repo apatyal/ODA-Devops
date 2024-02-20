@@ -26,7 +26,7 @@ jobs:
         id: build-the-image
         env:
           ECR_REGISTRY: 985182088924.dkr.ecr.us-east-1.amazonaws.com
-          ECR_REPOSITORY: workflow
+          ECR_REPOSITORY: hjsat
           IMAGE_TAG: postgres_1989
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG .
