@@ -34,7 +34,7 @@ jobs:
 
       - name: Create and switch to branch-test
         run: |
-          git checkout -b branch-test origin/branch-test || git checkout branch-test
+          git checkout -b branch-test branch-test || git checkout branch-test
 
       - name: Merge changes from branch-Experiment
         run: |
