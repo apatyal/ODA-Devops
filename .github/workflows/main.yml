@@ -1,3 +1,4 @@
+
 name: Build & push image to ECR
 
 on:
@@ -38,7 +39,9 @@ jobs:
 
       - name: Merge changes from branch-Experiment
         run: |
-          git merge branch-Experiment
+        
+           git checkout branch-test
+           git merge --no-ff Experiment
 
       - name: Push changes to branch-test
         run: |
