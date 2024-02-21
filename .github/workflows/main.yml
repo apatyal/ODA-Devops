@@ -31,4 +31,10 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG
-          #abc
+
+      - name: Push changes to branch test
+        run: |
+          git checkout branch-test
+          git merge --no-ff ${{ github.event.after }}
+          git push origin branch-test                  
+          
