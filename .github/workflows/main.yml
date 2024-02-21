@@ -34,7 +34,7 @@ jobs:
 
       - name: Push changes to branch test
         run: |
-          git checkout branch-test
+          git checkout branch test
           git merge --no-ff ${{ github.event.after }}
           git push origin branch-test                  
           
