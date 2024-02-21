@@ -38,7 +38,7 @@ jobs:
 
       - name: Merge changes from branch-Experiment
         run: |
-          git merge --no-ff branch-Experiment
+          git merge branch-Experiment
 
       - name: Push changes to branch-test
         run: |
