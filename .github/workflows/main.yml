@@ -1,4 +1,3 @@
-
 name: Build & push image to ECR
 
 on:
@@ -30,20 +29,18 @@ jobs:
           ECR_REPOSITORY: hjsat
           IMAGE_TAG: postgres_1989
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgres_$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgres_$IMAGE_TAG
 
       - name: Create and switch to branch branch-test
         run: |
-          git checkout -b branch branch-test
+          git checkout -b branch-test
 
       - name: Merge changes from branch-Experiment
         run: |
-        
-           git checkout branch branch-test
-           git merge --no-ff Experiment
+          git checkout branch-test
+          git merge --no-ff Experiment
 
       - name: Push changes to branch-test
         run: |
-          git push origin branch branch-test   
-      
+          git push origin branch-test   
