@@ -15,12 +15,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Fetch Development Branch
-        run: git fetch origin development:development
+        run: git fetch origin development
 
       - name: Merge Development into Testing
         run: |
           git checkout development
           git checkout -b testing || git checkout testing
-          git merge --no-ff --no-edit development
+          git merge --no-ff --no-edit FETCH_HEAD
           git push origin testing
+
+
 
