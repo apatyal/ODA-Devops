@@ -2,7 +2,7 @@ name: Merge Development into Testing
 
 on:
   pull_request_target:
-    branches: [ "devepolment" ]
+    branches: [ "development" ]
     types: [closed]
 
 jobs:
