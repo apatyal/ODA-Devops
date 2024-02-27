@@ -1,7 +1,8 @@
 name: Merge Development into Testing
 
 on:
-  pull_request:
+  pull_request_target:
+    branches: [ "devepolment" ]
     types: [closed]
 
 jobs:
@@ -15,7 +16,8 @@ jobs:
 
       - name: Merge Development into Testing
         run: |
-          git fetch origin development
-          git checkout testing
+          git fetch origin development:development
+          git checkout development
+          git checkout -b testing || git checkout testing
           git merge --no-ff --no-edit development
           git push origin testing
