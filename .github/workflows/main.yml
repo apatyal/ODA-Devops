@@ -3,7 +3,7 @@ name: Build & push image to ECR
 
 on:
   push:
-    branches: ["Experiment"]
+    branches: ["development"]
 
 jobs:
   Build-push-image:
