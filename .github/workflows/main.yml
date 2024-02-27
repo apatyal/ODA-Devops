@@ -21,7 +21,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@v2e
 
       - name: Build and push docker images
         id: build-the-image
@@ -35,9 +35,9 @@ jobs:
 
       - name: Merge changes into testing
         if: github.event.pull.request.merged == true && github.head.ref == "development"
-        run: |
+        run: 
+          git fetch origin testing
           git checkout testing
-
           git merge --no-ff --n-=commit development
           git commit -am "Merge experiment into testing"
           git push origin testing
