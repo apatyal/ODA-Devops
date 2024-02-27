@@ -14,8 +14,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Get default branch
+        id: default_branch
+        run: echo "::set-output name=branch::$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+
       - name: Ensure not on development branch
-        run: git checkout -f main  # Assuming master is your default branch
+        run: git checkout -f ${{ steps.default_branch.outputs.branch }}
 
       - name: Merge Development into Testing
         run: |
