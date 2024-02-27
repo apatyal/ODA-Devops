@@ -33,17 +33,11 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:postgress_$IMAGE_TAG
 
-      - name: Create and switch to branch-test
+      - name: Merge changes into testing
+        if: github.event.pull.request.merged == true && github.head.ref == "development"
         run: |
-          git checkout -b branch-test
+          git checkout testing
 
-      - name: Merge changes from branch-Experiment
-        run: |
-        
-           git checkout branch-test
-           git merge --no-ff Experiment
-
-      - name: Push changes to branch-test
-        run: |
-          git push origin branch-test 
-          #
+          git merge --no-ff --n-=commit development
+          git commit -am "Merge experiment into testing"
+          git push origin testing
