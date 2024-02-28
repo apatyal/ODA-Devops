@@ -1,0 +1,28 @@
+name: Merge Development into Testing
+
+on:
+  pull_request_target:
+    branches: [ "development" ]
+    types: [closed]
+
+jobs:
+  merge-development-into-testing:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Fetch Development Branch
+        run: git fetch origin development
+
+      - name: Merge Development into Testing
+        run: |
+          git checkout development
+          git checkout -b testing || git checkout testing
+          git merge --no-ff --no-edit FETCH_HEAD
+          git push origin testing
+
+
+
