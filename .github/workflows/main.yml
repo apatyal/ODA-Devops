@@ -30,4 +30,5 @@ jobs:
       - name: Replace credentials
         run: |
           find . -name "*" -exec sed -i "s/ kindly make these changes!!=".\+",/changes are done,/'
+           git push origin testing
           
