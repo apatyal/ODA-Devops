@@ -1,3 +1,6 @@
+#CICD workflow code- which will auto trigger changes to test branch on pull request in develpment branch.
+
+
 name: Merge Development into Testing
 
 on:
@@ -24,5 +27,8 @@ jobs:
           git merge --no-ff --no-edit FETCH_HEAD
           git push origin testing
 
-
-
+      - name: Replace credentials
+        run: |
+          find . -name "*" -exec sed -i "s/ kindly make these changes!!=".\+",/changes are done,/'
+           git push origin testing
+          
