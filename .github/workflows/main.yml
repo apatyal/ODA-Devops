@@ -24,5 +24,3 @@ jobs:
           git merge --no-ff --no-edit FETCH_HEAD
           git push origin testing
 
-
-
